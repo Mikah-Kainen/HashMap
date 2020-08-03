@@ -4,11 +4,13 @@ using System.Text;
 
 namespace HashMap
 {
-    class HashFunction<T> : IHashFunction<T>
-    {
-        public int GetHash(T value)
-        {
-            return Math.Abs(value.GetHashCode());
-        }
-    }
+    //public delegate int HashDelegate<T>(T input);
+
+    //class HashFunction<T> : IHashFunction<T>
+    //{
+    //    public int GetHash(T value)
+    //    {
+    //        return Math.Abs(value.GetHashCode());
+    //    }
+    //}
 }

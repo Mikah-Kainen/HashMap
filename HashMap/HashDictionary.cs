@@ -9,7 +9,8 @@ namespace HashMap
         public int Count { get; private set; }
         public List<T>[] HashArray;
         public IHashFunction<keyType> HashFunction;
-        public HashDictionary(IHashFunction<keyType> HashFunction, int count)
+        //public HashDictionary(IHashFunction<keyType> HashFunction, int count)
+        public HashDictionary(Func<keyType, int> hashFunc, int count)
         {
             Count = count;
             HashArray = new List<T>[count];
