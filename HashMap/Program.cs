@@ -50,7 +50,9 @@ namespace HashMap
             dict.Insert("blueberry", "a blue fruit");
             dict.Insert("raspberry", "a red fruit");
 
-
+            bool bool1 = dict.Remove("apple", "a red fruit");
+            bool bool2 = dict.Remove("mango", "a delicious fruit");
+            bool bool3 = dict.Remove("bla", "blob");
 
         }
     }

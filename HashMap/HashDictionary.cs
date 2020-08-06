@@ -8,7 +8,7 @@ namespace HashMap
     {
         public int Count { get; private set; }
         public List<T>[] HashArray;
-        public IHashFunction<keyType> HashFunction;
+        public Func<keyType, int> HashFunction;
         //public HashDictionary(IHashFunction<keyType> HashFunction, int count)
         public HashDictionary(Func<keyType, int> hashFunc, int count)
         {
@@ -18,18 +18,18 @@ namespace HashMap
             {
                 HashArray[i] = new List<T>();
             }
-            this.HashFunction = HashFunction;
+            this.HashFunction = hashFunc;
         }
 
         public void Add(keyType key, T value)
         {
-            int index = HashFunction.GetHash(key) % Count;
+            int index = HashFunction(key) % Count;
             HashArray[index].Add(value);
         }
 
         public bool Remove(keyType key, T value)
         {
-            int index = HashFunction.GetHash(key) % Count;
+            int index = HashFunction(key) % Count;
             if(!HashArray[index].Remove(value))
             {
                 return false;

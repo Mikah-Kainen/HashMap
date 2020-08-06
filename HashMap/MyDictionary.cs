@@ -76,12 +76,33 @@ namespace HashMap
                 Count++;
 
             }
-
-
- 
-
         }
 
+        private Pair<TKey, TValue> FindPair(TValue targetValue, TKey targetKey, LinkedList<Pair<TKey, TValue>> targetBucket)
+        {
+            foreach(Pair<TKey, TValue> Pair in targetBucket)
+            {
+                if(Pair.Value.Equals(targetValue) && Pair.Key.Equals(targetKey))
+                {
+                    return Pair;
+                }
+            }
+            return null;
+        }
+
+        public bool Remove(TValue targetValue,  TKey targetKey)
+        {
+            int bucketIndex = GetBucketIndex(targetKey, capacity);
+            LinkedList<Pair<TKey, TValue>> targetBucket = buckets[bucketIndex];
+
+            Pair<TKey, TValue> targetPair = FindPair(targetValue, targetKey, targetBucket);
+            if(targetBucket.Remove(targetPair))
+            {
+                Count--;
+                return true;
+            }
+            return false;
+        }
 
         public void Resize()
         {
@@ -90,7 +111,7 @@ namespace HashMap
 
             // go over each item that existed in the old bucket, rehash it and add it to new bucket
 
-            foreach (var bucket in buckets)
+            foreach (LinkedList<Pair<TKey, TValue>> bucket in buckets)
             {
                 if (bucket != null)
                 {
@@ -119,7 +140,7 @@ namespace HashMap
 
 
             buckets = newbuckets;
-            capacity *= 2;
+            capacity = tempcapacity;
         }
 
         private int GetBucketIndex(TKey key, int capacity)
