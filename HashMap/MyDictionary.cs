@@ -36,6 +36,18 @@ namespace HashMap
 
         }
 
+        public TValue this[TKey key]
+        {
+            get
+            {
+                return FindPair(key, buckets[GetBucketIndex(key, capacity)]).Value;
+            }
+
+            set
+            {               
+                FindPair(key, buckets[GetBucketIndex(key, capacity)]).Value = value;
+            }
+        }
 
         public void Insert(TKey key, TValue value)
         {
@@ -78,26 +90,52 @@ namespace HashMap
             }
         }
 
-        private Pair<TKey, TValue> FindPair(TValue targetValue, TKey targetKey, LinkedList<Pair<TKey, TValue>> targetBucket)
+        private Pair<TKey, TValue> FindPair(TKey targetKey, LinkedList<Pair<TKey, TValue>> targetBucket)
         {
             foreach(Pair<TKey, TValue> Pair in targetBucket)
             {
-                if(Pair.Value.Equals(targetValue) && Pair.Key.Equals(targetKey))
+                if(Pair.Key.Equals(targetKey))
                 {
                     return Pair;
                 }
             }
-            return null;
+            throw new Exception("Value not Found");
         }
 
-        public bool Remove(TValue targetValue,  TKey targetKey)
+        public bool Contains(TKey targetKey)
+        {
+            foreach(Pair<TKey, TValue> Pair in buckets[GetBucketIndex(targetKey, capacity)])
+            {
+                if(Pair.Key.Equals(targetKey))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Remove(TKey targetKey)
         {
             int bucketIndex = GetBucketIndex(targetKey, capacity);
-            LinkedList<Pair<TKey, TValue>> targetBucket = buckets[bucketIndex];
-
-            Pair<TKey, TValue> targetPair = FindPair(targetValue, targetKey, targetBucket);
-            if(targetBucket.Remove(targetPair))
+            if(buckets[bucketIndex] == null)
             {
+                return false;
+            }
+            LinkedList<Pair<TKey, TValue>> targetBucket = buckets[bucketIndex];
+            Pair<TKey, TValue> targetPair = null;
+ 
+            foreach(Pair<TKey, TValue> pair in targetBucket)
+            {
+                if(pair.Key.Equals(targetKey))
+                {
+                    targetPair = pair;
+                    break;
+                }
+            }
+
+            if(targetPair != null)
+            {
+                targetBucket.Remove(targetPair);
                 Count--;
                 return true;
             }

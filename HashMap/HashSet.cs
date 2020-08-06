@@ -22,6 +22,26 @@ namespace HashMap
 
         }
 
+        
+
+        //public T this[T key]
+        //{
+        //    get
+        //    {
+        //        return buckets[GetBucketIndex(key, capacity)]
+        //    }
+
+        //    set
+        //    {
+
+        //    }
+        //}
+
+        //private T FindValue(T key, LinkedList)
+        //{
+
+        //}
+
 
         public void Insert(T value)
         {
