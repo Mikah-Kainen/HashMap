@@ -22,25 +22,6 @@ namespace HashMap
 
         }
 
-        public T this[T key]
-        {
-            get
-            {
-                return key;
-            }
-
-            set
-            {
-                int index = GetBucketIndex(key, capacity);
-                if (buckets[index] == null)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-                buckets[index].Find(key) = null;
-                Insert(key);
-            }
-        }
-
         public bool Contains(T targetKey)
         {
             foreach(var value in buckets[GetBucketIndex(targetKey, capacity)])

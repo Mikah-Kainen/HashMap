@@ -56,7 +56,6 @@ namespace HashMap
             //bool isFalse = dict.Contains("apple");
 
 
-
             HashSet<string> Set = new HashSet<string>();
 
             Set.Insert("blue");
@@ -69,7 +68,9 @@ namespace HashMap
             Set.Remove("green");
             Set.Remove("yellow");
 
-
+            bool ISTRUE = Set.Contains("red");
+            bool ISFALSE = Set.Contains("green");
+            bool isTRUE = Set.Contains("blue");
         }
     }
 }
