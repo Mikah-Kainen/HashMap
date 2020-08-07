@@ -31,43 +31,45 @@ namespace HashMap
         //}
         static void Main(string[] args)
         {
-            var dict = new MyDictionary<string, string>();
+            //var dict = new MyDictionary<string, string>();
 
-            dict.Insert("apple", "a red fruit");
-            dict.Insert("orange", "an orange fruit");
-            dict.Insert("banana", "a yellow fruit");
-            dict.Insert("mango", "a delicious fruit");
-            dict.Insert("blueberry", "a blue fruit");
-            dict.Insert("raspberry", "a red fruit");
-            dict["banana"] = "something else";
+            //dict.Insert("apple", "a red fruit");
+            //dict.Insert("orange", "an orange fruit");
+            //dict.Insert("banana", "a yellow fruit");
+            //dict.Insert("mango", "a delicious fruit");
+            //dict.Insert("blueberry", "a blue fruit");
+            //dict.Insert("raspberry", "a red fruit");
+            //dict["banana"] = "something else";
 
-            bool bool1 = dict.Remove("apple");
-            bool bool4 = dict.Remove("apple");
-            bool bool2 = dict.Remove("mango");
-            bool bool3 = dict.Remove("bla");
+            //bool bool1 = dict.Remove("apple");
+            //bool bool4 = dict.Remove("apple");
+            //bool bool2 = dict.Remove("mango");
+            //bool bool3 = dict.Remove("bla");
 
-            //Console.WriteLine($"{dict["mango"]}");
-            Console.WriteLine($"{dict["banana"]}");
-            Console.WriteLine($"{dict["blueberry"]}");
-            dict["blueberry"] = "blue";
-            Console.WriteLine($"{dict["blueberry"]}");
+            ////Console.WriteLine($"{dict["mango"]}");
+            //Console.WriteLine($"{dict["banana"]}");
+            //Console.WriteLine($"{dict["blueberry"]}");
+            //dict["blueberry"] = "blue";
+            //Console.WriteLine($"{dict["blueberry"]}");
 
-            bool isTrue = dict.Contains("blueberry");
-            bool isFalse = dict.Contains("apple");
+            //bool isTrue = dict.Contains("blueberry");
+            //bool isFalse = dict.Contains("apple");
 
 
 
-            //HashSet<string> Set = new HashSet<string>();
+            HashSet<string> Set = new HashSet<string>();
 
-            //Set.Insert("blue");
-            //Set.Insert("yellow");
-            //Set.Insert("green");
-            //Set.Insert("red");
-            //Set.Insert("Bob");
-            //Set.Insert("purple");
+            Set.Insert("blue");
+            Set.Insert("yellow");
+            Set.Insert("green");
+            Set.Insert("red");
+            Set.Insert("Bob");
+            Set.Insert("purple");
 
-            //Set.Remove("green");
-            //Set.Remove("yellow");
+            Set.Remove("green");
+            Set.Remove("yellow");
+
+
         }
     }
 }

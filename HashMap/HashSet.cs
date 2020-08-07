@@ -22,26 +22,36 @@ namespace HashMap
 
         }
 
-        
+        public T this[T key]
+        {
+            get
+            {
+                return key;
+            }
 
-        //public T this[T key]
-        //{
-        //    get
-        //    {
-        //        return buckets[GetBucketIndex(key, capacity)]
-        //    }
+            set
+            {
+                int index = GetBucketIndex(key, capacity);
+                if (buckets[index] == null)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                buckets[index].Find(key) = null;
+                Insert(key);
+            }
+        }
 
-        //    set
-        //    {
-
-        //    }
-        //}
-
-        //private T FindValue(T key, LinkedList)
-        //{
-
-        //}
-
+        public bool Contains(T targetKey)
+        {
+            foreach(var value in buckets[GetBucketIndex(targetKey, capacity)])
+            {
+                if(value.Equals(targetKey))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public void Insert(T value)
         {
